@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "rules",
+  "info": {
+    "singularName": "rule",
+    "pluralName": "rules",
+    "displayName": "Rule"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "rule_type": {
+      "type": "enumeration",
+      "enum": [
+        "capacity",
+        "progress",
+        "cost"
+      ]
+    },
+    "condition": {
+      "type": "json"
+    },
+    "output": {
+      "type": "text"
+    },
+    "severity": {
+      "type": "enumeration",
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ]
+    }
+  }
+}

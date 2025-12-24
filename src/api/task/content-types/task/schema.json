@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tasks",
+  "info": {
+    "singularName": "task",
+    "pluralName": "tasks",
+    "displayName": "Task"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "task_id": {
+      "type": "uid"
+    },
+    "project_type": {
+      "type": "enumeration",
+      "enum": [
+        "Values",
+        "Feedback360",
+        "Culture"
+      ]
+    },
+    "task_class": {
+      "type": "enumeration",
+      "enum": [
+        "delivery",
+        "admin",
+        "review"
+      ]
+    },
+    "assignee_role": {
+      "type": "enumeration",
+      "enum": [
+        "dev",
+        "lead",
+        "facilitator"
+      ]
+    },
+    "task_status": {
+      "type": "enumeration",
+      "enum": [
+        "planned",
+        "in_progress",
+        "qa",
+        "done"
+      ]
+    },
+    "estimate_hours": {
+      "type": "integer",
+      "required": true
+    },
+    "task_name": {
+      "type": "text"
+    }
+  }
+}
