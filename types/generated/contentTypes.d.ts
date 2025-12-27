@@ -478,17 +478,24 @@ export interface ApiRuleRule extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    condition: Schema.Attribute.JSON;
+    comparator: Schema.Attribute.Enumeration<['gt', 'gte', 'lt', 'lte', 'eq']>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    enabled: Schema.Attribute.Boolean;
+    field: Schema.Attribute.Text;
+    group_by: Schema.Attribute.Text;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<'oneToMany', 'api::rule.rule'> &
       Schema.Attribute.Private;
-    output: Schema.Attribute.Text;
+    operation: Schema.Attribute.Enumeration<
+      ['aggregate', 'map', 'filter', 'emit']
+    >;
+    output: Schema.Attribute.JSON;
     publishedAt: Schema.Attribute.DateTime;
     rule_type: Schema.Attribute.Enumeration<['capacity', 'progress', 'cost']>;
     severity: Schema.Attribute.Enumeration<['info', 'warning', 'critical']>;
+    threshold: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

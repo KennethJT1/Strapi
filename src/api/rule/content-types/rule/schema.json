@@ -19,18 +19,46 @@
         "cost"
       ]
     },
-    "condition": {
-      "type": "json"
-    },
-    "output": {
-      "type": "text"
-    },
     "severity": {
       "type": "enumeration",
       "enum": [
         "info",
         "warning",
         "critical"
+      ]
+    },
+    "operation": {
+      "type": "enumeration",
+      "enum": [
+        "aggregate",
+        "map",
+        "filter",
+        "emit"
+      ]
+    },
+    "field": {
+      "type": "text"
+    },
+    "group_by": {
+      "type": "text"
+    },
+    "threshold": {
+      "type": "text"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "output": {
+      "type": "json"
+    },
+    "comparator": {
+      "type": "enumeration",
+      "enum": [
+        "gt",
+        "gte",
+        "lt",
+        "lte",
+        "eq"
       ]
     }
   }
