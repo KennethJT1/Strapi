@@ -60,6 +60,9 @@
         "lte",
         "eq"
       ]
+    },
+    "context": {
+      "type": "json"
     }
   }
 }

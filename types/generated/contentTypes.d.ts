@@ -479,6 +479,7 @@ export interface ApiRuleRule extends Struct.CollectionTypeSchema {
   };
   attributes: {
     comparator: Schema.Attribute.Enumeration<['gt', 'gte', 'lt', 'lte', 'eq']>;
+    context: Schema.Attribute.JSON;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
