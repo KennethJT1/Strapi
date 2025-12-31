@@ -467,6 +467,36 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDeliveryTaskDeliveryTask
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'delivery_tasks';
+  info: {
+    displayName: 'Delivery Task';
+    pluralName: 'delivery-tasks';
+    singularName: 'delivery-task';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::delivery-task.delivery-task'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    task_title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiRuleRule extends Struct.CollectionTypeSchema {
   collectionName: 'rules';
   info: {
@@ -1084,6 +1114,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::delivery-task.delivery-task': ApiDeliveryTaskDeliveryTask;
       'api::rule.rule': ApiRuleRule;
       'api::state-map.state-map': ApiStateMapStateMap;
       'api::task.task': ApiTaskTask;

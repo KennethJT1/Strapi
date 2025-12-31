@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_tasks",
+  "info": {
+    "singularName": "delivery-task",
+    "pluralName": "delivery-tasks",
+    "displayName": "Delivery Task"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "task_title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}
