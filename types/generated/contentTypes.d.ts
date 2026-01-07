@@ -479,17 +479,46 @@ export interface ApiDeliveryTaskDeliveryTask
     draftAndPublish: true;
   };
   attributes: {
+    category: Schema.Attribute.Enumeration<
+      ['Reporting', 'Security', 'Platform', 'Product', 'Ops']
+    >;
+    Ccreated_by: Schema.Attribute.Text;
+    created_date: Schema.Attribute.DateTime;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.String;
+    due_week: Schema.Attribute.Integer;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::delivery-task.delivery-task'
     > &
       Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    owner: Schema.Attribute.Enumeration<
+      [
+        'Mariam',
+        'Uche',
+        'Kenneth',
+        'Michael',
+        'Gbolahan',
+        'Ahmed',
+        'Muhedeen',
+        'Engineering',
+        'External',
+      ]
+    >;
+    priority: Schema.Attribute.Enumeration<['High', 'Medium', 'Low']>;
     publishedAt: Schema.Attribute.DateTime;
+    review_cadence: Schema.Attribute.Enumeration<
+      ['Weekly', 'Fortnightly', 'Monthly']
+    >;
+    target_quarter: Schema.Attribute.Enumeration<
+      ['Q1 2026', 'Q2 2026', 'Q3 2026', 'Q4 2026']
+    >;
+    task_status: Schema.Attribute.Enumeration<
+      ['Not started', 'In progress', 'Blocked ', 'Done']
+    >;
     task_title: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -527,6 +556,44 @@ export interface ApiRuleRule extends Struct.CollectionTypeSchema {
     rule_type: Schema.Attribute.Enumeration<['capacity', 'progress', 'cost']>;
     severity: Schema.Attribute.Enumeration<['info', 'warning', 'critical']>;
     threshold: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiSlackSlack extends Struct.CollectionTypeSchema {
+  collectionName: 'slacks';
+  info: {
+    displayName: 'Slack';
+    pluralName: 'slacks';
+    singularName: 'slack';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocker: Schema.Attribute.Text;
+    chargeable: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    description: Schema.Attribute.RichText;
+    developer: Schema.Attribute.Text;
+    evidence: Schema.Attribute.Text;
+    hours: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::slack.slack'> &
+      Schema.Attribute.Private;
+    notes: Schema.Attribute.Text;
+    priority: Schema.Attribute.Enumeration<['High', 'Medium', 'Low']>;
+    publishedAt: Schema.Attribute.DateTime;
+    section: Schema.Attribute.Enumeration<['yesterday', 'today']>;
+    task_status: Schema.Attribute.Enumeration<
+      ['In Progress', 'Blocked', 'Done']
+    >;
+    taskId: Schema.Attribute.Text;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1116,6 +1183,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::delivery-task.delivery-task': ApiDeliveryTaskDeliveryTask;
       'api::rule.rule': ApiRuleRule;
+      'api::slack.slack': ApiSlackSlack;
       'api::state-map.state-map': ApiStateMapStateMap;
       'api::task.task': ApiTaskTask;
       'plugin::content-releases.release': PluginContentReleasesRelease;

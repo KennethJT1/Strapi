@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "slacks",
+  "info": {
+    "singularName": "slack",
+    "pluralName": "slacks",
+    "displayName": "Slack"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "date": {
+      "type": "date"
+    },
+    "developer": {
+      "type": "text"
+    },
+    "section": {
+      "type": "enumeration",
+      "enum": [
+        "yesterday",
+        "today"
+      ]
+    },
+    "taskId": {
+      "type": "text"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "task_status": {
+      "type": "enumeration",
+      "enum": [
+        "In Progress",
+        "Blocked",
+        "Done"
+      ]
+    },
+    "hours": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "chargeable": {
+      "type": "boolean"
+    },
+    "evidence": {
+      "type": "text"
+    },
+    "blocker": {
+      "type": "text"
+    },
+    "notes": {
+      "type": "text"
+    }
+  }
+}

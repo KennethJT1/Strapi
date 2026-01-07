@@ -38,15 +38,15 @@ export default ({ env }) => {
     // },
 
     postgres: {
-  connection: {
-    connectionString: env("DATABASE_URL"),
-    ssl: {
-      rejectUnauthorized: false, // ⚡ allows self-signed cert
+      connection: {
+        connectionString: env("DATABASE_URL"),
+        ssl: {
+          rejectUnauthorized: false, // ⚡ allows self-signed cert
+        },
+        schema: env("DATABASE_SCHEMA", "public"),
+      },
+      pool: { min: 2, max: 10 },
     },
-    schema: env("DATABASE_SCHEMA", "public"),
-  },
-  pool: { min: 2, max: 10 },
-},
 
     sqlite: {
       connection: {

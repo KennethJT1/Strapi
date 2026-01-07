@@ -14,8 +14,75 @@
     "task_title": {
       "type": "text"
     },
-    "description": {
-      "type": "string"
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Reporting",
+        "Security",
+        "Platform",
+        "Product",
+        "Ops"
+      ]
+    },
+    "owner": {
+      "type": "enumeration",
+      "enum": [
+        "Mariam",
+        "Uche",
+        "Kenneth",
+        "Michael",
+        "Gbolahan",
+        "Ahmed",
+        "Muhedeen",
+        "Engineering",
+        "External"
+      ]
+    },
+    "task_status": {
+      "type": "enumeration",
+      "enum": [
+        "Not started",
+        "In progress",
+        "Blocked ",
+        "Done"
+      ]
+    },
+    "target_quarter": {
+      "type": "enumeration",
+      "enum": [
+        "Q1 2026",
+        "Q2 2026",
+        "Q3 2026",
+        "Q4 2026"
+      ]
+    },
+    "due_week": {
+      "type": "integer"
+    },
+    "review_cadence": {
+      "type": "enumeration",
+      "enum": [
+        "Weekly",
+        "Fortnightly",
+        "Monthly"
+      ]
+    },
+    "notes": {
+      "type": "text"
+    },
+    "Ccreated_by": {
+      "type": "text"
+    },
+    "created_date": {
+      "type": "datetime"
     }
   }
 }
