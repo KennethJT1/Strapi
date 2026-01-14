@@ -1,0 +1,129 @@
+{
+  "kind": "collectionType",
+  "collectionName": "projects",
+  "info": {
+    "singularName": "project",
+    "pluralName": "projects",
+    "displayName": "Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "text"
+    },
+    "project_code": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "year": {
+      "type": "biginteger"
+    },
+    "quarter": {
+      "type": "enumeration",
+      "enum": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    },
+    "project_status": {
+      "type": "enumeration",
+      "enum": [
+        "Planned",
+        "In Progress",
+        "Blocked",
+        "On Hold",
+        "Completed"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Reporting",
+        "Ops / Communication",
+        "Capability",
+        "Product",
+        "Security",
+        "Platform"
+      ]
+    },
+    "review_cadence": {
+      "type": "enumeration",
+      "enum": [
+        "daily",
+        "weekly",
+        "monthly",
+        "yearly"
+      ]
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "owner": {
+      "type": "text"
+    },
+    "start_date": {
+      "type": "date"
+    },
+    "end_date": {
+      "type": "date"
+    },
+    "progress": {
+      "type": "integer"
+    },
+    "blockers": {
+      "type": "richtext"
+    },
+    "notes": {
+      "type": "richtext"
+    },
+    "risks": {
+      "type": "richtext"
+    },
+    "documents": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "external_links": {
+      "type": "text"
+    },
+    "quarterly_update": {
+      "type": "component",
+      "component": "updates.quarterly-update",
+      "repeatable": true
+    },
+    "metrics": {
+      "type": "component",
+      "component": "metrics.kpi",
+      "repeatable": true
+    },
+    "deliverable": {
+      "type": "component",
+      "component": "deliverables.deliverable",
+      "repeatable": true
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

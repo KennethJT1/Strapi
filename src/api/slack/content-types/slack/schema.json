@@ -60,6 +60,9 @@
     },
     "notes": {
       "type": "text"
+    },
+    "report_uid": {
+      "type": "uid"
     }
   }
 }

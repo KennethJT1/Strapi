@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_deliverables_deliverables",
+  "info": {
+    "displayName": "Deliverable"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "text"
+    },
+    "deliverable_status": {
+      "type": "enumeration",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Completed"
+      ]
+    },
+    "due_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

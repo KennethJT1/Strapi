@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "planning_submissions",
+  "info": {
+    "singularName": "planning-submission",
+    "pluralName": "planning-submissions",
+    "displayName": "Planning Submission"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "weekCommencing": {
+      "type": "date"
+    },
+    "employeeId": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "component",
+      "component": "task-commitment.task-commitment",
+      "repeatable": true
+    }
+  }
+}

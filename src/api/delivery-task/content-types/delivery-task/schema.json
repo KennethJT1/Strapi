@@ -83,6 +83,9 @@
     },
     "created_date": {
       "type": "datetime"
+    },
+    "report_uid": {
+      "type": "uid"
     }
   }
 }

@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_metrics_kpis",
+  "info": {
+    "displayName": "kpi"
+  },
+  "options": {},
+  "attributes": {
+    "metric_name": {
+      "type": "text"
+    },
+    "target": {
+      "type": "biginteger"
+    },
+    "current_value": {
+      "type": "biginteger"
+    }
+  },
+  "config": {}
+}

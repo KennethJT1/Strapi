@@ -12,12 +12,13 @@
     "start": "strapi start",
     "strapi": "strapi",
     "upgrade": "npx @strapi/upgrade latest",
-    "upgrade:dry": "npx @strapi/upgrade latest --dry"
+    "upgrade:dry": "npx @strapi/upgrade latest --dry",
+    "dev2": "ts-node --transpile-only ./node_modules/@strapi/strapi/bin/strapi.js develop"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "5.33.0",
-    "@strapi/plugin-users-permissions": "5.33.0",
-    "@strapi/strapi": "5.33.0",
+    "@strapi/plugin-cloud": "5.33.1",
+    "@strapi/plugin-users-permissions": "5.33.1",
+    "@strapi/strapi": "5.33.1",
     "better-sqlite3": "12.4.1",
     "mysql2": "^3.16.0",
     "pg": "^8.16.3",
@@ -30,11 +31,16 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   },
   "engines": {
     "node": ">=20.0.0 <=24.x.x",
     "npm": ">=6.0.0"
+  },
+  
+  "overrides": {
+    "@strapi/admin": "5.33.1"
   },
   "strapi": {
     "uuid": "6f5834fe-f951-473c-bee1-9ee259aa6523",

@@ -1,0 +1,85 @@
+{
+  "collectionName": "components_task_commitment_task_commitments",
+  "info": {
+    "displayName": "task-commitment"
+  },
+  "options": {},
+  "attributes": {
+    "taskId": {
+      "type": "string"
+    },
+    "projectCode": {
+      "type": "string"
+    },
+    "userStory": {
+      "type": "text"
+    },
+    "targetDate": {
+      "type": "date"
+    },
+    "actualDate": {
+      "type": "date"
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": [
+        "High",
+        "Medium",
+        "Low"
+      ]
+    },
+    "chargeable": {
+      "type": "string"
+    },
+    "actualHours": {
+      "type": "integer"
+    },
+    "plannedHours": {
+      "type": "integer"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "evidence": {
+      "type": "richtext"
+    },
+    "taskCategory": {
+      "type": "text"
+    },
+    "planned": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "task_status": {
+      "type": "enumeration",
+      "enum": [
+        "Not Started",
+        "In Progress",
+        "Due Today",
+        "Ready for QA",
+        "Blocker",
+        "Late",
+        "Pass QA"
+      ]
+    },
+    "percentComplete": {
+      "type": "integer"
+    },
+    "sprint": {
+      "type": "integer"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "DoD",
+        "Readiness",
+        "Availability",
+        "Task",
+        "Not_work"
+      ]
+    }
+  },
+  "config": {}
+}

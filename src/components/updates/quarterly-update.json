@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_updates_quarterly_updates",
+  "info": {
+    "displayName": "quarterly_update"
+  },
+  "options": {},
+  "attributes": {
+    "quarter": {
+      "type": "enumeration",
+      "enum": [
+        "Q1",
+        "Q2",
+        "Q3",
+        "Q4"
+      ]
+    },
+    "update_summary": {
+      "type": "richtext"
+    },
+    "progress_made": {
+      "type": "richtext"
+    },
+    "challenges": {
+      "type": "richtext"
+    },
+    "next_quarter_plan": {
+      "type": "richtext"
+    },
+    "update_date": {
+      "type": "date"
+    }
+  },
+  "config": {}
+}

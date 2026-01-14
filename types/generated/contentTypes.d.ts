@@ -107,6 +107,43 @@ export interface AdminApiTokenPermission extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface AdminAuditLog extends Struct.CollectionTypeSchema {
+  collectionName: 'strapi_audit_logs';
+  info: {
+    displayName: 'Audit Log';
+    pluralName: 'audit-logs';
+    singularName: 'audit-log';
+  };
+  options: {
+    draftAndPublish: false;
+    timestamps: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    action: Schema.Attribute.String & Schema.Attribute.Required;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.DateTime & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::audit-log'> &
+      Schema.Attribute.Private;
+    payload: Schema.Attribute.JSON;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    user: Schema.Attribute.Relation<'oneToOne', 'admin::user'>;
+  };
+}
+
 export interface AdminPermission extends Struct.CollectionTypeSchema {
   collectionName: 'admin_permissions';
   info: {
@@ -473,6 +510,7 @@ export interface ApiDeliveryTaskDeliveryTask
     >;
     priority: Schema.Attribute.Enumeration<['High', 'Medium', 'Low']>;
     publishedAt: Schema.Attribute.DateTime;
+    report_uid: Schema.Attribute.UID;
     review_cadence: Schema.Attribute.Enumeration<
       ['Weekly', 'Fortnightly', 'Monthly']
     >;
@@ -486,6 +524,111 @@ export interface ApiDeliveryTaskDeliveryTask
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPlanningSubmissionPlanningSubmission
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'planning_submissions';
+  info: {
+    displayName: 'Planning Submission';
+    pluralName: 'planning-submissions';
+    singularName: 'planning-submission';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    employeeId: Schema.Attribute.String;
+    entries: Schema.Attribute.Component<
+      'task-commitment.task-commitment',
+      true
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::planning-submission.planning-submission'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    weekCommencing: Schema.Attribute.Date;
+  };
+}
+
+export interface ApiProjectProject extends Struct.CollectionTypeSchema {
+  collectionName: 'projects';
+  info: {
+    displayName: 'Project';
+    pluralName: 'projects';
+    singularName: 'project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blockers: Schema.Attribute.RichText;
+    category: Schema.Attribute.Enumeration<
+      [
+        'Reporting',
+        'Ops / Communication',
+        'Capability',
+        'Product',
+        'Security',
+        'Platform',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deliverable: Schema.Attribute.Component<'deliverables.deliverable', true>;
+    description: Schema.Attribute.RichText;
+    documents: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    end_date: Schema.Attribute.Date;
+    external_links: Schema.Attribute.Text;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::project.project'
+    > &
+      Schema.Attribute.Private;
+    metrics: Schema.Attribute.Component<'metrics.kpi', true>;
+    notes: Schema.Attribute.RichText;
+    owner: Schema.Attribute.Text;
+    priority: Schema.Attribute.Enumeration<['High', 'Medium', 'Low']>;
+    progress: Schema.Attribute.Integer;
+    project_code: Schema.Attribute.UID<'title'>;
+    project_status: Schema.Attribute.Enumeration<
+      ['Planned', 'In Progress', 'Blocked', 'On Hold', 'Completed']
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    quarter: Schema.Attribute.Enumeration<['Q1', 'Q2', 'Q3', 'Q4']>;
+    quarterly_update: Schema.Attribute.Component<
+      'updates.quarterly-update',
+      true
+    >;
+    review_cadence: Schema.Attribute.Enumeration<
+      ['daily', 'weekly', 'monthly', 'yearly']
+    >;
+    risks: Schema.Attribute.RichText;
+    start_date: Schema.Attribute.Date;
+    title: Schema.Attribute.Text;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    users_permissions_user: Schema.Attribute.Relation<
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    year: Schema.Attribute.BigInteger;
   };
 }
 
@@ -552,6 +695,7 @@ export interface ApiSlackSlack extends Struct.CollectionTypeSchema {
     notes: Schema.Attribute.Text;
     priority: Schema.Attribute.Enumeration<['High', 'Medium', 'Low']>;
     publishedAt: Schema.Attribute.DateTime;
+    report_uid: Schema.Attribute.UID;
     section: Schema.Attribute.Enumeration<['yesterday', 'today']>;
     task_status: Schema.Attribute.Enumeration<
       ['In Progress', 'Blocked', 'Done']
@@ -1137,6 +1281,7 @@ declare module '@strapi/strapi' {
     export interface ContentTypeSchemas {
       'admin::api-token': AdminApiToken;
       'admin::api-token-permission': AdminApiTokenPermission;
+      'admin::audit-log': AdminAuditLog;
       'admin::permission': AdminPermission;
       'admin::role': AdminRole;
       'admin::session': AdminSession;
@@ -1144,6 +1289,8 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::delivery-task.delivery-task': ApiDeliveryTaskDeliveryTask;
+      'api::planning-submission.planning-submission': ApiPlanningSubmissionPlanningSubmission;
+      'api::project.project': ApiProjectProject;
       'api::rule.rule': ApiRuleRule;
       'api::slack.slack': ApiSlackSlack;
       'api::state-map.state-map': ApiStateMapStateMap;
