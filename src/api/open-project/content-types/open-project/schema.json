@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "open_projects",
+  "info": {
+    "singularName": "open-project",
+    "pluralName": "open-projects",
+    "displayName": "Open Project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "openProjectId": {
+      "type": "integer"
+    },
+    "date": {
+      "type": "date"
+    },
+    "durationIso": {
+      "type": "string"
+    },
+    "hoursDecimal": {
+      "type": "decimal"
+    },
+    "description": {
+      "type": "text"
+    },
+    "userName": {
+      "type": "text"
+    },
+    "userId": {
+      "type": "integer"
+    },
+    "projectName": {
+      "type": "text"
+    },
+    "projectId": {
+      "type": "integer"
+    },
+    "workPackageName": {
+      "type": "text"
+    },
+    "workPackageId": {
+      "type": "integer"
+    },
+    "activityName": {
+      "type": "text"
+    },
+    "createdAtOpenProject": {
+      "type": "text"
+    },
+    "updatedAtOpenProject": {
+      "type": "text"
+    }
+  }
+}

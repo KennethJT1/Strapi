@@ -527,6 +527,47 @@ export interface ApiDeliveryTaskDeliveryTask
   };
 }
 
+export interface ApiOpenProjectOpenProject extends Struct.CollectionTypeSchema {
+  collectionName: 'open_projects';
+  info: {
+    displayName: 'Open Project';
+    pluralName: 'open-projects';
+    singularName: 'open-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activityName: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdAtOpenProject: Schema.Attribute.Text;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    date: Schema.Attribute.Date;
+    description: Schema.Attribute.Text;
+    durationIso: Schema.Attribute.String;
+    hoursDecimal: Schema.Attribute.Decimal;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::open-project.open-project'
+    > &
+      Schema.Attribute.Private;
+    openProjectId: Schema.Attribute.Integer;
+    projectId: Schema.Attribute.Integer;
+    projectName: Schema.Attribute.Text;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedAtOpenProject: Schema.Attribute.Text;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.Integer;
+    userName: Schema.Attribute.Text;
+    workPackageId: Schema.Attribute.Integer;
+    workPackageName: Schema.Attribute.Text;
+  };
+}
+
 export interface ApiPlanningSubmissionPlanningSubmission
   extends Struct.CollectionTypeSchema {
   collectionName: 'planning_submissions';
@@ -1289,6 +1330,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::delivery-task.delivery-task': ApiDeliveryTaskDeliveryTask;
+      'api::open-project.open-project': ApiOpenProjectOpenProject;
       'api::planning-submission.planning-submission': ApiPlanningSubmissionPlanningSubmission;
       'api::project.project': ApiProjectProject;
       'api::rule.rule': ApiRuleRule;
